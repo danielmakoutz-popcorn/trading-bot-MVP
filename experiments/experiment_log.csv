@@ -1,0 +1,3 @@
+created_at,experiment_name,status,symbols_removed,symbols_added,reason,source_report,start_date,end_date,result_notes
+2026-05-28T17:19:32,symbol change,active,NOW,OKTA,now was underperforming and ai results showed that this would be the top shadow candidate from last week,,2026-05-28,,
+2026-06-10T14:42:12,symbol change,active,BA,NVDA,"large p/l drops, stock market down, nvda performing well according to the memos",,2026-06-10,,

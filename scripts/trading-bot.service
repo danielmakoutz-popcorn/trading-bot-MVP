@@ -1,0 +1,15 @@
+[Unit]
+Description=Local Trading Bot (Paper)
+After=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/trading-bot-MVP
+Environment="PATH=/path/to/trading-bot-MVP/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+ExecStart=/path/to/trading-bot-MVP/.venv/bin/python /path/to/trading-bot-MVP/main.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
