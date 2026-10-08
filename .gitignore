@@ -1,0 +1,26 @@
+# Python virtual environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+
+# Runtime-generated databases, logs and archives
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+logs/
+archives/
+control/
+*.log
+
+# OS and IDE metadata
+.DS_Store
+.vscode/
