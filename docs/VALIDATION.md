@@ -59,4 +59,4 @@ Keep runtime databases and logs outside Git. Preserve both `equity.db` and the c
 - HTTP tests, paper-account integration, successful-tick readiness, and snapshot freshness.
 - Repaired CSV replay wiring, measured restart recovery, and automated CI checks.
 
-The repository was private at inspection. Documentation changes preserve that visibility; an external reviewer needs access or an approved public extract.
+Repository visibility at final verification: **public**. It was private at the initial source inspection.

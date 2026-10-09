@@ -43,7 +43,7 @@ The script creates temporary databases and logs, then removes them. It does not 
 
 ## Development setup for the full prototype
 
-The commands below are the **source-derived startup path**, not a recorded fresh-install success. Access to this repository is required while it remains private.
+The commands below are the **source-derived startup path**, not a recorded fresh-install success.
 
 ```bash
 git clone https://github.com/danielmakoutz-popcorn/trading-bot-MVP.git
