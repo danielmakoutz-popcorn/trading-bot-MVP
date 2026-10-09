@@ -1,0 +1,109 @@
+# Public configuration template. Never put real credentials in this file.
+# Supply APCA_API_KEY_ID and APCA_API_SECRET_KEY as environment variables.
+# Global configuration
+timezone: "America/Los_Angeles"
+
+broker:
+  name: "alpaca"
+  alpaca:
+    key_id: ""
+    secret_key: ""
+    base_url: "https://paper-api.alpaca.markets"
+
+data_provider:
+  name: "alpaca"        # "yahoo" or "csv"
+  alpaca:                      # key: APCA_API_KEY_ID
+    key_id: ""
+    secret_key: ""
+    base_url: "https://paper-api.alpaca.markets"
+  paper: true
+  interval_seconds: 60 # loop cadence
+  feed: "iex"
+  #symbols: ["AAPL", "MSFT", "TSLA", "QQQ"]
+  # CSV-only:
+
+shadow:
+  enabled: true
+  symbols: [
+    "AMD", "INTC", "ORCL", "CRM", "PYPL", "UBER", "LYFT", "SHOP", "SNOW", "PANW",
+    "ADBE", "PLTR", "NET", "CRWD", "ZS", "NOW", "DDOG", "MDB", "DOCU",
+    "PEP", "KO", "MCD", "SBUX", "COST", "HD", "LOW", "WMT", "TGT",
+    "V", "MA", "JPM", "BAC", "C", "GS", "MS", "WFC", "AXP", "SCHW",
+    "XOM", "CVX", "COP", "PSX", "PFE", "JNJ", "UNH", "LLY", "ABBV", "MRK", "NFLX", "BA"
+  ]
+  poll_seconds: 60
+  limit_bars: 250
+  out_dir: "logs/shadow"
+  file_prefix: "shadow"
+  flush_every: 1
+  include_equity: true
+
+strategy:
+  name: "sma_crossover"
+  #symbol: "AAPL"
+  symbols: ["AAPL", "MSFT", "TSLA", "QQQ", "AMZN", "GOOGL", "META", "NVDA", "F", "NKE", "OKTA",]
+  fast_window: 12
+  slow_window: 26
+  EMA_FAST: 20
+  EMA_MID: 50
+  EMA_SLOW: 200
+  RSI_LEN: 5
+  ADX_LEN: 14
+  ATR_LEN: 14
+  VWAP_RESET: "D"
+  COOLDOWN: 5
+  MIN_ADX: 12
+  ATR_TRAIL: 2.2
+  TIME_STOP: 1000
+  ML_FEATURE_HASH: True
+  ENTRY_THRESHOLD: 0.35
+  WEIGHTS:
+    cross_up: 0.50
+    adx_ok: 0.00
+    rsi_ok: 0.30
+    close_gt_vwap: 0.10
+    trend_ok: 0.10
+  SCORING:
+    rsi_mid: 48
+    rsi_span: 24
+    adx_min: 8
+    adx_span: 16
+    require_adx_gate: false
+    require_cross_gate: false
+
+risk:
+  cash_start: 100000.0
+  risk_fraction: 0.05  # risk up to 10% of equity per signal (market order)
+  MIN_ATR_PCT: 0.25
+  MAX_ATR_PCT: 5
+  force_flat_enabled: false
+  force_flat_minutes_before_close: 1
+
+bootstrap:
+  warmup_bars: 200
+  timeframe: "1Min"
+  feed: "iex"
+  allow_trade_on_history: false
+  safety_margin_bars: 5
+
+trading_hours:
+  # Trade only during these local hours (HH:MM 24h)
+  start: "06:30"
+  end: "13:00"
+
+database:
+  path: "marketbot.db"
+
+logging:
+  dir: "logs"
+  file: "bot.log"
+  max_bytes: 1048576  # 1 MB
+  backup_count: 5
+
+web:
+  host: "127.0.0.1"
+  port: 8000
+
+debug:
+  assume_flat_if_broker_flat: true
+  ignore_positions_entirely: false
